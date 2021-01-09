@@ -1,22 +1,81 @@
-# ExtentAPI 3.x Java
+# HILTI UI Test Automation - Interview project
 
-[![Join the chat at https://gitter.im/anshooarora/extentreports](https://badges.gitter.im/anshooarora/extentreports.svg)](https://gitter.im/anshooarora/extentreports?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/anshooarora/extentreports-java.svg)](https://travis-ci.org/anshooarora/extentreports-java)
+Following project is used as an interview evaluation tool. 
+It consists of a common web UI test automation stack:
 
-#### Current Version: 3.0.1
+- Java 8
+- Selenium 3.141.59
+- Cucumber 4.7
+- TestNG 6.14
+- Maven 3.6
 
-Java8 only. Java7 and lower versions, use Extent v2. 
+## Installation
 
-Note: Use [the latest version](https://github.com/anshooarora/extentx) of ExtentX with this version.
+Please make sure you have the following tools setup in your local environment:
 
-### Documentation
+#### Java 8
 
-View [extentreports.com](http://extentreports.com/docs/versions/3/java/) for complete documentation.
+- JDK 8 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+- JAVA_HOME environment variable should be set and point to JDK 8
 
-Note: Documentation is in progress and will be regularly updated. Please let me know if you find anything missing or incorrect.
+#### Maven
 
-### Samples
+Please make use you have maven 3 installed and available in your command line.
+There are many ways to install maven locally:
 
- * <a href='http://extentreports.com/os/3/extent.html'>Standard</a>
- * <a href='http://extentreports.com/os/3/bdd.html'>BDD</a>
- 
+- download [Maven](https://maven.apache.org/download.cgi) and add to PATH
+- MAC: [Homebrew maven formula](https://formulae.brew.sh/formula/maven)
+- Windows: [Chocolatey maven package](https://chocolatey.org/packages/maven)
+
+You can verify the proper installation by executing the following command:
+```bash
+mvn --version
+```
+
+#### Verify local environment
+
+This project contains some sample UI tests, which can be executed with the following command:
+```bash
+mvn test
+```
+And the result should be as follows:
+```bash
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:07 min
+[INFO] Finished at: 2019-12-05T15:09:53+01:00
+[INFO] ------------------------------------------------------------------------
+```
+
+In case of any issues please go though installation guide above or check the Troubleshooting section.
+
+## Project structure
+
+#### Feature files
+
+Gherkin feature files are located in the [resources/features](src/test/resources/features) directory.
+
+#### Step classes
+
+Cucumber steps definitions are located in [com.hilti.ta.steps](src/test/java/com/hilti/ta/steps) package.
+
+#### Page Object Model
+
+Pages and components definition can be found under [com.hilti.ta.pages](src/test/java/com/hilti/ta/pages) package.
+
+#### Utility classes
+
+Utility classes/enums (e.g. WebDriverFactory) can be found under [com.hilti.ta.utils](src/test/java/com/hilti/ta/utils) package.
+
+#### TestNG runner
+
+There is a single TestNG tests runner located in [com.hilti.ta](src/test/java/com/hilti/ta/RunCucumberTest.java) Cucumber options are defined on there.
+
+#### Supported reporting
+
+- XML: target/cucumber-report.xml
+- JSON: target/cucumber-report.json
+- cukes: target/cukes/index.html
